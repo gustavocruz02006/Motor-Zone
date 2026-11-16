@@ -16,8 +16,7 @@ const Benefits = () => {
                 <span className="benefit-icon">📍</span>
                 <div>
                     <h3>Nossas Lojas</h3>
-                    <a href="https://www.motobr.com.br/institucional/nossas-lojas"
-                       target="_blank"
+                    <a href=""
                        rel="noopener noreferrer">
                         Encontre a mais próxima
                     </a>

@@ -1,8 +1,8 @@
 import {useState} from 'react'
 import './Carousel.css'
 
-import banner1 from '../../assets/banner1.jpg'
-import banner2 from '../../assets/banner2.jpg'
+import banner1 from '../../../assets/banner1.jpg'
+import banner2 from '../../../assets/banner2.jpg'
 
 const Carousel = () => {
 

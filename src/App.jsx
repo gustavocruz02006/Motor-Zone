@@ -1,7 +1,7 @@
-import Header from './organisms/Header'
-import Carousel from './organisms/Carousel'
-import Benefits from './organisms/Benefits/index.jsx'
-import CarouselVideos from './organisms/CarouselVideos/index.jsx'
+import Header from './components/organisms/Header'
+import Carousel from './components/organisms/Carousel'
+import Benefits from './components/organisms/Benefits/index.jsx'
+import CarouselVideos from './components/organisms/CarouselVideos/index.jsx'
 
 import './App.css'
 
@@ -10,9 +10,7 @@ function App() {
     <>
       <Header />
       <Carousel />
-
       <Benefits />
-
       <CarouselVideos />
     </>
   )

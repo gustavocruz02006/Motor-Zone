@@ -1,16 +1,11 @@
 import {useState} from 'react'
 import './Carousel.css'
 
-<<<<<<< HEAD:src/organisms/Carousel/index.jsx
-import banner1 from '../../assets/banner1.jpg'
-import banner2 from '../../assets/banner2.jpg'
-import banner3 from '../../assets/banner3.png'
-import banner4 from '../../assets/banner4.png'
-import banner5 from '../../assets/banner5.png'
-=======
-import banner1 from "../../../assets/banner1.jpg";
-import banner2 from "../../../assets/banner2.jpg";
->>>>>>> ed36e4c64ea1b0e4eedaf8ab4fd1cd80fb8d195d:src/components/organisms/Carousel/index.jsx
+import banner1 from '../../../assets/banner1.jpg'
+import banner2 from '../../../assets/banner2.jpg'
+import banner3 from '../../../assets/banner3.png'
+import banner4 from '../../../assets/banner4.png'
+import banner5 from '../../../assets/banner5.png'
 
 const Carousel = () => {
 

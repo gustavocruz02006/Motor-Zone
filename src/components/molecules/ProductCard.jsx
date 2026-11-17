@@ -1,5 +1,6 @@
 import './ProductCard.css';
 
+
 const ProductCard = ({ imagem, nome, preco, categoria }) => {
     return (
         <div className='product-card'>

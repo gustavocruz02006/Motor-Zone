@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import defaultLogo from "../assets/logo.png";
 import { defaultCategories, initialProducts } from "../data/products";
 
+
 const StoreContext = createContext(null);
 
 const PRODUCTS_KEY = "motorzone_products_v1";
@@ -102,6 +103,7 @@ export function StoreProvider({ children }) {
   );
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function useStore() {
   const context = useContext(StoreContext);
   if (!context) {

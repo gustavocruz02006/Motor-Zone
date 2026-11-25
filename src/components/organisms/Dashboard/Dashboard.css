@@ -1,0 +1,38 @@
+.dash {--dash-accent: #e11d48; --dash-line: #3f3f46;}
+.dash-head { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:16px; }
+.dash-head h2 { margin:0; font-size:1.3rem; }
+.dash-status { font-size:.85rem; font-weight:700; padding:4px 12px; border-radius:999px; border:1px solid currentColor; }
+.dash-status.on { color:#2a9d57; }
+.dash-status.off { color:#c0392b; }
+
+.dash-kpis { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; margin-bottom:16px; }
+.dash-kpi { border:1px solid var(--dash-line); border-left:4px solid var(--dash-accent); border-radius:8px; padding:14px 16px; display:flex; flex-direction:column; gap:4px; }
+.dash-kpi strong { font-size:2rem; line-height:1; }
+.dash-kpi span { font-size:.85rem; opacity:.75; }
+
+.dash-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:12px; }
+.dash-box { border:1px solid var(--dash-line); border-radius:8px; padding:16px; }
+.dash-box h3 { margin:0 0 12px; font-size:1rem; }
+.dash-empty { opacity:.7; font-size:.9rem; margin:0; }
+.dash-empty button { background:none; border:0; color:var(--dash-accent); font-weight:700; cursor:pointer; padding:0; text-decoration:underline; }
+
+.dash-bars { list-style:none; margin:0; padding:0; display:grid; gap:8px; }
+.dash-bars li { display:grid; grid-template-columns:110px 1fr 28px; align-items:center; gap:8px; font-size:.88rem; }
+.dash-bar-label { text-transform:capitalize; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.dash-bar-track { height:8px; background:var(--dash-line); border-radius:4px; overflow:hidden; }
+.dash-bar-track i { display:block; height:100%; background:var(--dash-accent); border-radius:4px; }
+.dash-bars b { text-align:right; }
+
+.dash-list { margin:0; display:grid; gap:10px; }
+.dash-list div { display:flex; justify-content:space-between; gap:12px; font-size:.9rem; }
+.dash-list dt { opacity:.75; }
+.dash-list dd { margin:0; font-weight:700; text-align:right; }
+
+.dash-recent, .dash-alerts { list-style:none; margin:0; padding:0; display:grid; gap:8px; font-size:.9rem; }
+.dash-recent li { display:flex; justify-content:space-between; gap:8px; }
+.dash-recent small { opacity:.65; text-transform:capitalize; }
+.dash-alerts li { padding-left:14px; position:relative; }
+.dash-alerts li::before { content:""; position:absolute; left:0; top:.55em; width:6px; height:6px; border-radius:50%; background:#e0a100; }
+.dash-alerts li.ok::before { background:#2a9d57; }
+
+@media (max-width:480px) { .dash-bars li { grid-template-columns:90px 1fr 24px; } }

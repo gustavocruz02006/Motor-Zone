@@ -1,17 +1,19 @@
 import { useState } from "react";
 import { useStore } from "../../../context/StoreContext";
+import Dashboard from "../Dashboard";
+import CategoryManager from "../CategoryManager";
 import "./AdminPanel.css";
 
 const emptyForm = {
   nome: "",
   descricao: "",
   preco: "",
-  categoria: "Capacetes",
+  categoria: "",
   imagem: "",
   disponivel: true,
 };
 
-export default function AdminPanel({ onBackToStore }) {
+const AdminPanel = ({ onBackToStore }) => {
   const {
     products,
     categories,
@@ -22,9 +24,10 @@ export default function AdminPanel({ onBackToStore }) {
     toggleProductAvailability,
     updateStoreConfig,
     resetStoreConfig,
+     categories: storeCategories,
   } = useStore();
 
-  const [activeTab, setActiveTab] = useState("produtos");
+ const [activeTab, setActiveTab] = useState("dashboard");
   const [form, setForm] = useState(emptyForm);
   const [editingId, setEditingId] = useState(null);
   const [filterCategory, setFilterCategory] = useState("Todas");
@@ -74,7 +77,7 @@ export default function AdminPanel({ onBackToStore }) {
       nome: product.nome || "",
       descricao: product.descricao || "",
       preco: product.preco || "",
-      categoria: product.categoria || categories[0],
+      categoria: product.categoria || storeCategories[0]?.nome || "",
       imagem: product.imagem || "",
       disponivel: product.disponivel ?? true,
     });
@@ -117,12 +120,28 @@ export default function AdminPanel({ onBackToStore }) {
       </div>
 
       <div className="admin-tabs">
+
+         <button
+    className={activeTab === "dashboard" ? "tab active" : "tab"}
+    onClick={() => setActiveTab("dashboard")}
+  >
+    Resumo
+  </button>
+
         <button
           className={activeTab === "produtos" ? "tab active" : "tab"}
           onClick={() => setActiveTab("produtos")}
         >
           Gerenciar Produtos ({products.length})
         </button>
+
+         <button
+    className={activeTab === "categorias" ? "tab active" : "tab"}
+    onClick={() => setActiveTab("categorias")}
+  >
+    Categorias ({categories.length})
+  </button>
+
         <button
           className={activeTab === "configuracoes" ? "tab active" : "tab"}
           onClick={() => {
@@ -135,6 +154,11 @@ export default function AdminPanel({ onBackToStore }) {
       </div>
 
       {feedback && <div className="admin-feedback">{feedback}</div>}
+
+      {activeTab === "dashboard" && <Dashboard onGoTo={setActiveTab} />}
+
+{activeTab === "categorias" && <CategoryManager />}
+
 
       {activeTab === "produtos" && (
         <div className="admin-grid">
@@ -167,21 +191,22 @@ export default function AdminPanel({ onBackToStore }) {
                   />
                 </label>
 
-                <label>
-                  Categoria *
-                  <select
-                    value={form.categoria}
-                    onChange={(e) =>
-                      setForm({ ...form, categoria: e.target.value })
-                    }
-                  >
-                    {categories.map((cat) => (
-                      <option key={cat} value={cat}>
-                        {cat}
-                      </option>
-                    ))}
-                  </select>
-                </label>
+               <label>
+                Categoria *
+                    <select
+                        value={form.categoria}
+                         onChange={(e) =>
+                           setForm({ ...form, categoria: e.target.value })
+                           }
+                          required
+                           >
+                 <option value="">Selecione uma categoria</option>
+                 {storeCategories.map((cat) => (
+  <option key={cat.id} value={cat.nome}>{cat.nome}</option>
+))}
+                  
+                </select>
+                 </label>
               </div>
 
               <label>
@@ -266,12 +291,12 @@ export default function AdminPanel({ onBackToStore }) {
                 value={filterCategory}
                 onChange={(e) => setFilterCategory(e.target.value)}
               >
-                <option value="Todas">Todas as categorias</option>
-                {categories.map((cat) => (
-                  <option key={cat} value={cat}>
-                    {cat}
-                  </option>
-                ))}
+               <option value="Todas">Todas as categorias</option>
+{storeCategories.map((cat) => (
+  <option key={cat.id} value={cat.nome}>
+    {cat.nome}
+  </option>
+))}
               </select>
             </div>
 
@@ -508,3 +533,5 @@ export default function AdminPanel({ onBackToStore }) {
     </main>
   );
 }
+
+export default AdminPanel;

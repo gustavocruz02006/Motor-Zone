@@ -3,7 +3,7 @@ import { useStore } from "../../context/StoreContext";
 import ProductCard from "./ProductCard";
 
 export default function ProductList() {
-  const { products, categories } = useStore();
+  const { products, categories: storeCategories } = useStore();
   const [selectedCategory, setSelectedCategory] = useState("Todas");
 
   const filtered =
@@ -22,22 +22,23 @@ export default function ProductList() {
           marginBottom: "1.5rem",
         }}
       >
-        {["Todas", ...categories].map((cat) => (
-          <button
-            key={cat}
-            onClick={() => setSelectedCategory(cat)}
-            style={{
-              padding: "0.5rem 1rem",
-              borderRadius: "999px",
-              border: "1px solid #3f3f46",
-              background: selectedCategory === cat ? "#e11d48" : "#18181b",
-              color: "#fff",
-              cursor: "pointer",
-            }}
-          >
-            {cat}
-          </button>
-        ))}
+        {["Todas", ...storeCategories.map((c) => c.nome)].map((cat) => (
+  <button
+    key={cat}
+    onClick={() => setSelectedCategory(cat)}
+    style={{
+      padding: "0.5rem 1rem",
+      borderRadius: "999px",
+      border: "1px solid #3f3f46",
+      background: selectedCategory === cat ? "#e11d48" : "#18181b",
+      color: "#fff",
+      cursor: "pointer",
+    }}
+  >
+    {cat}
+  </button>
+))}
+      
       </div>
 
       <div className="products-grid">
